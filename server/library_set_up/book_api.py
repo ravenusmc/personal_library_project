@@ -4,6 +4,9 @@
 # The purpose of this file will be to 1. Get ISBN's into CSV file, 2. Use ISBN's, from CSV file 
 # to get book information 3. put that book information into a new csv file. 
 # I may want to add ISBN's to a CSV file that do not have information. 
+
+# Probably going to have to put my data in a mysql database - I think this would better for the sole 
+# fact of working more with mysql! 
 import requests
 import csv
 import numpy as np
