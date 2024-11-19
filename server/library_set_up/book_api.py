@@ -68,7 +68,11 @@ class BuildCSVFile():
     with open(filename, mode="w", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=headers)
         writer.writeheader()  # Write the header row
-        writer.writerows(data)  # Write all rows from the list of dictionaries    
+        writer.writerows(data)  # Write all rows from the list of dictionaries   
+  
+  def write_to_database(self, books_list):
+    pass
+
 
   def run_program(self):
       program_obj = BuildCSVFile()
