@@ -36,6 +36,7 @@ class BuildCSVFile():
 
               # Extract relevant details
               title = details.get("title", "N/A")
+              #Can I get first and last name? 
               authors = ', '.join([author.get("name", "N/A") for author in details.get("authors", [])])
               lc_classifications = ', '.join(details.get("lc_classifications", ["N/A"]))
               publish_date = details.get("publish_date", "N/A")
