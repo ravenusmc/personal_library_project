@@ -71,6 +71,7 @@ class BuildCSVFile():
         writer.writeheader()  # Write the header row
         writer.writerows(data)  # Write all rows from the list of dictionaries   
   
+  # Method to write to the database - may keep CSV part as well
   def write_to_database(self, books_list):
     pass
 
