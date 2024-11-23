@@ -62,6 +62,7 @@ class BuildCSVFile():
           print(f"Error: {e}")
     return books_list
   
+  # Probably going to keep this. 
   def write_to_csv(self, data, filename="book_info.csv"):
     # Get the keys (column names) from the first dictionary
     headers = data[0].keys()
