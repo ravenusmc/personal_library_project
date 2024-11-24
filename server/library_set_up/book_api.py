@@ -23,44 +23,56 @@ class BuildCSVFile():
   def get_book_details(self, isbn_list):
     books_list = []
     for isbn in isbn_list:
-      book_dictionary = {}
-      url = f"https://openlibrary.org/api/books?bibkeys=ISBN:{isbn}&jscmd=details&format=json"
-      try:
-          response = requests.get(url)
-          response.raise_for_status()  # Raise an error for HTTP issues
-          data = response.json()
-          # Extract book details
-          book_key = f"ISBN:{isbn}"
-          if book_key in data:
-              details = data[book_key].get("details", {})
+        book_dictionary = {}
+        url = f"https://openlibrary.org/api/books?bibkeys=ISBN:{isbn}&jscmd=details&format=json"
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # Raise an error for HTTP issues
+            data = response.json()
+            # Extract book details
+            book_key = f"ISBN:{isbn}"
+            if book_key in data:
+                details = data[book_key].get("details", {})
 
-              # Extract relevant details
-              title = details.get("title", "N/A")
-              #Can I get first and last name? 
-              authors = ', '.join([author.get("name", "N/A") for author in details.get("authors", [])])
-              lc_classifications = ', '.join(details.get("lc_classifications", ["N/A"]))
-              publish_date = details.get("publish_date", "N/A")
-              publisher = ', '.join(details.get("publishers", ["N/A"]))
-              subjects = ', '.join(details.get("subjects", ["N/A"]))
-              pagination = details.get("pagination", "N/A")
-              info_url = data[book_key].get("info_url", "N/A")
+                # Extract relevant details
+                title = details.get("title", "N/A")
+                
+                # Process authors for first and last names
+                authors_data = details.get("authors", [])
+                authors = []
+                for author in authors_data:
+                    full_name = author.get("name", "N/A")
+                    name_parts = full_name.split()  # Split the name into parts
+                    first_name = name_parts[0] if len(name_parts) > 0 else "N/A"
+                    last_name = name_parts[-1] if len(name_parts) > 1 else "N/A"
+                    # authors.append({"First Name": first_name, "Last Name": last_name})
 
-              # Populate the dictionary with the extracted book data
-              book_dictionary["Title"] = title
-              book_dictionary["Authors"] = authors
-              book_dictionary["LC Classifications"] = lc_classifications
-              book_dictionary["Publish Date"] = publish_date
-              book_dictionary["Publisher"] = publisher
-              book_dictionary["Subjects"] = subjects
-              book_dictionary["Pagination"] = pagination
-              book_dictionary["Info URL"] = info_url
-              book_dictionary['Location'] = "A1"     
-              books_list.append(book_dictionary)    
-          else:
-              print("No data found for the given ISBN.")
-      except Exception as e:
-          print(f"Error: {e}")
+                lc_classifications = ', '.join(details.get("lc_classifications", ["N/A"]))
+                publish_date = details.get("publish_date", "N/A")
+                publisher = ', '.join(details.get("publishers", ["N/A"]))
+                subjects = ', '.join(details.get("subjects", ["N/A"]))
+                pagination = details.get("pagination", "N/A")
+                info_url = data[book_key].get("info_url", "N/A")
+
+                # Populate the dictionary with the extracted book data
+                book_dictionary["Title"] = title
+                book_dictionary['First Name'] = first_name
+                book_dictionary['Last Name'] = last_name
+                # book_dictionary["Authors"] = authors  # Store authors as a list of dictionaries
+                book_dictionary["LC Classifications"] = lc_classifications
+                book_dictionary["Publish Date"] = publish_date
+                book_dictionary["Publisher"] = publisher
+                book_dictionary["Subjects"] = subjects
+                book_dictionary["Pagination"] = pagination
+                book_dictionary["Info URL"] = info_url
+                book_dictionary['Location'] = "A1"     
+                books_list.append(book_dictionary)    
+            else:
+                print("No data found for the given ISBN.")
+        except Exception as e:
+            print(f"Error: {e}")
     return books_list
+
   
   # Probably going to keep this. 
   def write_to_csv(self, data, filename="book_info.csv"):
@@ -75,8 +87,7 @@ class BuildCSVFile():
   # Method to write to the database - may keep CSV part as well
   def write_to_database(self, books_list):
     pass
-
-
+  
   def run_program(self):
       program_obj = BuildCSVFile()
       isbn_list = program_obj.place_ISBN_in_list()
