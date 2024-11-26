@@ -19,7 +19,5 @@ CREATE TABLE books
   lastName VARCHAR(240) NOT NULL,
   LC_Classifications VARCHAR(240) NOT NULL,
   Publish_Date DATE NOT NULL, 
-  username VARCHAR(240) NOT NULL,
-  email VARCHAR(240) NOT NULL,
   PRIMARY KEY(user_id)
 );
