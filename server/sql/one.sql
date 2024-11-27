@@ -3,7 +3,6 @@ CREATE DATABASE personal_library;
 use rsonal_library;
 
 
-book_dictionary["Publish Date"] = publish_date
 book_dictionary["Publisher"] = publisher
 book_dictionary["Subjects"] = subjects
 book_dictionary["Pagination"] = pagination
@@ -19,5 +18,7 @@ CREATE TABLE books
   lastName VARCHAR(240) NOT NULL,
   LC_Classifications VARCHAR(240) NOT NULL,
   Publish_Date DATE NOT NULL, 
+  Publisher VARCHAR(240) NOT NULL, 
+  
   PRIMARY KEY(user_id)
 );
