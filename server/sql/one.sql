@@ -19,6 +19,6 @@ CREATE TABLE books
   LC_Classifications VARCHAR(240) NOT NULL,
   Publish_Date DATE NOT NULL, 
   Publisher VARCHAR(240) NOT NULL, 
-  
+  Subjects VARCHAR(240) NOT NULL, 
   PRIMARY KEY(user_id)
 );
