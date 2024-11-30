@@ -12,6 +12,9 @@ import csv
 import numpy as np
 import pandas as pd
 
+# Importing files that I made:
+from data import *
+
 class BuildCSVFile():
 
   def __init__(self):

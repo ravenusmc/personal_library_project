@@ -1,6 +1,6 @@
 CREATE DATABASE personal_library;
 
-use rsonal_library;
+use personal_library;
 
 
 book_dictionary["Publisher"] = publisher
