@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 
 # Importing files that I made:
-from data import *
+from db import *
 
 class BuildCSVFile():
 
@@ -89,13 +89,17 @@ class BuildCSVFile():
   
   # Method to write to the database - may keep CSV part as well
   def write_to_database(self, books_list):
-    pass
+    db = Connection()
+    db. 
   
   def run_program(self):
-      program_obj = BuildCSVFile()
-      isbn_list = program_obj.place_ISBN_in_list()
-      books_list = program_obj.get_book_details(isbn_list)
-      program_obj.write_to_csv(books_list)
+    program_obj = BuildCSVFile()
+    isbn_list = program_obj.place_ISBN_in_list()
+    books_list = program_obj.get_book_details(isbn_list)
+    # May not be needed
+    #program_obj.write_to_csv(books_list)
+    program_obj.write_to_database(books_list)
+
 
 book_object = BuildCSVFile()
 book_object.run_program()

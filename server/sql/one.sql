@@ -1,13 +1,8 @@
+mysql -u root -p 
+
 CREATE DATABASE personal_library;
 
 use personal_library;
-
-
-book_dictionary["Publisher"] = publisher
-book_dictionary["Subjects"] = subjects
-book_dictionary["Pagination"] = pagination
-book_dictionary["Info URL"] = info_url
-book_dictionary['Location'] = "A1"    
 
 --Table for the books. 
 CREATE TABLE books
@@ -20,5 +15,8 @@ CREATE TABLE books
   Publish_Date DATE NOT NULL, 
   Publisher VARCHAR(240) NOT NULL, 
   Subjects VARCHAR(240) NOT NULL, 
-  PRIMARY KEY(user_id)
+  Pagination VARCHAR(240) NOT NULL, 
+  Info_URL VARCHAR(240) NOT NULL, 
+  location VARCHAR(10) NOT NULL,
+  PRIMARY KEY(book_id)
 );

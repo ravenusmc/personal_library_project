@@ -15,7 +15,7 @@ class Connection():
     self.cursor = self.conn.cursor()
   
   # This method will insert a group of books into the database.
-  def insert(self, post_data, hashed):
+  def insert_books(self, post_data, hashed):
     self._SQL = """insert into users
     (firstName, lastName, username, email, password)
     values
