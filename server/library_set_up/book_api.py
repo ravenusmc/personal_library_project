@@ -90,7 +90,7 @@ class BuildCSVFile():
   # Method to write to the database - may keep CSV part as well
   def write_to_database(self, books_list):
     db = Connection()
-    db. 
+    db.insert_books(books_list)
   
   def run_program(self):
     program_obj = BuildCSVFile()

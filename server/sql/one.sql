@@ -12,7 +12,7 @@ CREATE TABLE books
   firstName VARCHAR(240) NOT NULL,
   lastName VARCHAR(240) NOT NULL,
   LC_Classifications VARCHAR(240) NOT NULL,
-  Publish_Date DATE NOT NULL, 
+  Publish_Date DATE NULL, 
   Publisher VARCHAR(240) NOT NULL, 
   Subjects VARCHAR(240) NOT NULL, 
   Pagination VARCHAR(240) NOT NULL, 
