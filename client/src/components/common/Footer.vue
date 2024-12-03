@@ -1,0 +1,82 @@
+<template>
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">Copyright &copy; 2024 Double Sun Productions</p>
+        <div class="social-icons">
+          <a
+            href="https://www.linkedin.com/in/mcuddy1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="icon-link"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/ravenusmc"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="icon-link"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </template>
+  
+  <script>
+  export default {
+    name: "Footer",
+  };
+  </script>
+  
+  <style scoped>
+  .footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-text {
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .icon-link i {
+  font-size: 4rem; /* Adjust this value as needed */
+}
+
+  
+  .icon-link {
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s ease;
+  }
+  
+  .icon-link:hover {
+    color: #1abc9c;
+  }
+  </style>
+  
