@@ -17,11 +17,11 @@
 <style scoped>
 
 .main-image {
-  margin-top: 28px;
+  margin: 28px 0 28px 0;
   height: 80vh;
   background: url("../../assets/images/books.jpg") center/contain no-repeat;
   background-position: center center;
-  background-size: 65%; /* Slightly increases the width */
+  background-size: 70%; /* Slightly increases the width */
   display: flex;
   justify-content: center;
   align-items: center;
