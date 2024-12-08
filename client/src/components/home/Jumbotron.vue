@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
 </script>
 
 <style scoped>
@@ -39,12 +38,3 @@
 }
 
 </style>
-
-<!-- 1. Hero Section
-
-"Welcome to My Personal Library"
-"A World of Stories at Your Fingertips"
-Subheading:
-"Explore, Organize, and Rediscover Your Collection."
-Call-to-Action (CTA):
-"Browse Collection" or "Get Started" -->
