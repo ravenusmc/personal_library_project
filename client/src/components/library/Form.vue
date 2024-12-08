@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "Mapform",
   data() {
@@ -37,6 +39,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions("library", ["submitSearchQueryToServer"]),
     SubmitSearchQuery() {
       if (!this.search.trim()) {
         alert("Please enter a search query.");
@@ -46,7 +49,7 @@ export default {
         query: this.search,
         type: this.searchType,
       };
-      // this.submitSelectedYearToServer({ payload });
+      this.submitSearchQueryToServer({ payload });
     },
   },
 };
