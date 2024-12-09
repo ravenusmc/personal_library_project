@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
+# Importing files that I made:
+from db import *
+
 # instantiate the app
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -12,10 +15,12 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 @app.route('/getBooks', methods=['POST'])
 def get_Books_Data():
   if request.method == 'POST':
-      # db = Connection()
+      db_obj = Connection()
       post_data = request.get_json()
-      print(post_data)
+      query = post_data['query']
+      if post_data['type'] == 'Author':
+        db_obj.find_book_by_author(query)
       return jsonify('5')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

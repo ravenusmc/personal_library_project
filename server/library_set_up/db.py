@@ -42,4 +42,7 @@ class Connection():
       # Commit all changes to the database
       self.conn.commit()
       print(f"{len(books_list)} books inserted successfully!")
+    
+  def find_book_by_author(self):
+     pass
 
