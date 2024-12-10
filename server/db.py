@@ -16,5 +16,22 @@ class Connection():
   
     
   def find_book_by_author(self, query):
-    print('herde')
+    try:
+        # Prepare the SQL query
+        sql_query = """
+            SELECT * FROM books 
+            WHERE firstName LIKE %s OR lastName LIKE %s
+        """
+        # Using parameterized queries to prevent SQL injection
+        like_query = f"%{query}%"
+        self.cursor.execute(sql_query, (like_query, like_query))
+        
+        # Fetch all matching rows
+        results = self.cursor.fetchall()
+        # Return the results
+        return results
+    except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            return None
+    
 

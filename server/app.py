@@ -19,8 +19,8 @@ def get_Books_Data():
       post_data = request.get_json()
       query = post_data['query']
       if post_data['type'] == 'Author':
-        db_obj.find_book_by_author(query)
-      return jsonify('5')
+        author_results = db_obj.find_book_by_author(query)
+      return jsonify(author_results)
 
 if __name__ == '__main__':
     app.run(debug=True)

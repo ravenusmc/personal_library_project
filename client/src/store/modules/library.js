@@ -21,7 +21,8 @@ const actions = {
 		const path = 'http://localhost:5000/getBooks';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setMapData', res.data)
+				console.log(res.data)
+				// commit('setMapData', res.data)
 			})
 			.catch((error) => {
 				console.log(error);
