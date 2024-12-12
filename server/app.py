@@ -21,7 +21,6 @@ def get_Books_Data():
     if post_data['type'] == 'Author':
       results = db_obj.find_book_by_author(query)
     elif post_data['type'] == 'Title':
-      print(query)
       results = db_obj.find_book_by_title(query)
     else: 
       results = db_obj.find_books_by_subject(query)

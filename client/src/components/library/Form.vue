@@ -31,7 +31,7 @@
 import { mapActions } from "vuex";
 
 export default {
-  name: "Mapform",
+  name: "Form",
   data() {
     return {
       search: "",

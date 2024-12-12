@@ -7,22 +7,21 @@ import store from '@/store/index';
 Vue.use(Vuex);
 
 const data = {
-	dataReceived: false,
+	books: [],
 };
 
 const getters = {
-	dataReceived: (state) => state.dataReceived,
+	books: (state) => state.books, 
 };
 
 const actions = {
 
 	submitSearchQueryToServer: ({ commit }, { payload }) => {
-		// commit('setYear', payload['year'])
 		const path = 'http://localhost:5000/getBooks';
 		axios.post(path, payload)
 			.then((res) => {
 				console.log(res.data)
-				// commit('setMapData', res.data)
+				commit('setBooks', res.data)
 			})
 			.catch((error) => {
 				console.log(error);
@@ -33,8 +32,8 @@ const actions = {
 
 const mutations = {
 
-	setMapData(state, value) {
-		state.mapData = value;
+	setBooks(state, value) {
+		state.books = value;
 	},
 
 };
