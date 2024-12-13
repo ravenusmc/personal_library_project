@@ -11,8 +11,11 @@ const data = {
 };
 
 const getters = {
-	books: (state) => state.books, 
-};
+	books: (state) => {
+	  // Ensure books are always an array of arrays
+	  return Array.isArray(state.books[0]) ? state.books : state.books.length ? [state.books] : [];
+	},
+  };
 
 const actions = {
 

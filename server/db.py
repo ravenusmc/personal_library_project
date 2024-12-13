@@ -47,6 +47,7 @@ class Connection():
         
         # Fetch all matching rows
         results = self.cursor.fetchone()
+        print(results)
         # Return the results
         return results
     except mysql.connector.Error as err:
