@@ -8,6 +8,7 @@ Vue.use(Vuex);
 
 const data = {
 	books: [],
+  showBooks: true,
 };
 
 const getters = {
@@ -15,6 +16,7 @@ const getters = {
 	  // Ensure books are always an array of arrays
 	  return Array.isArray(state.books[0]) ? state.books : state.books.length ? [state.books] : [];
 	},
+  showBooks: (state) => state.showBooks,
   };
 
 const actions = {
@@ -23,8 +25,15 @@ const actions = {
 		const path = 'http://localhost:5000/getBooks';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
-				commit('setBooks', res.data)
+        console.log(res.data)
+				if (res.data.length === 0 || res.data == null) {
+          console.log('here')
+          commit('setShowBooks', false)
+          commit('setBooks', res.data)
+				} else {
+					commit('setBooks', res.data)
+          commit('setShowBooks', true)
+				}
 			})
 			.catch((error) => {
 				console.log(error);
@@ -38,6 +47,10 @@ const mutations = {
 	setBooks(state, value) {
 		state.books = value;
 	},
+
+  setShowBooks(state, value) {
+    state.showBooks = value; 
+  }
 
 };
 
