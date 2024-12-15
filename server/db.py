@@ -4,6 +4,9 @@ from bson.son import SON
 import mysql.connector
 from datetime import datetime
 
+# Bringing in libraries that I built. 
+from support import *
+
 class Connection():
 
   def __init__(self):
@@ -34,6 +37,25 @@ class Connection():
             print(f"Error: {err}")
             return None
   
+  # def find_book_by_title(self, query):
+  #   try:
+  #       # Prepare the SQL query
+  #       sql_query = """
+  #           SELECT * FROM books 
+  #           WHERE Title LIKE %s
+  #       """
+  #       # Using parameterized queries to prevent SQL injection
+  #       like_query = f"%{query}%"
+  #       self.cursor.execute(sql_query, (like_query, ))
+        
+  #       # Fetch all matching rows
+  #       results = self.cursor.fetchone()
+  #       print(results)
+  #       # Return the results
+  #       return results
+  #   except mysql.connector.Error as err:
+  #           print(f"Error: {err}")
+  #           return None
   def find_book_by_title(self, query):
     try:
         # Prepare the SQL query
@@ -45,14 +67,33 @@ class Connection():
         like_query = f"%{query}%"
         self.cursor.execute(sql_query, (like_query, ))
         
-        # Fetch all matching rows
-        results = self.cursor.fetchone()
-        print(results)
-        # Return the results
-        return results
+        # Fetch the first matching row
+        result = self.cursor.fetchone()
+
+        if result:
+            # Assume the 9th element in the result is the URL
+            url = result[9] if len(result) > 9 else None
+
+            if url:
+                # Fetch the description using the Support class
+                support = Support()
+                description = support.fetch_description(url)
+                
+                # Append the description to the result
+                result = list(result)  # Convert tuple to list for modification
+                result.append(description)
+            else:
+                print("No URL found in the result.")
+        else:
+            print("No book found matching the query.")
+
+        # Return the updated result
+        print(result)
+        return result
     except mysql.connector.Error as err:
-            print(f"Error: {err}")
-            return None
+        print(f"Error: {err}")
+        return None
+
   
   def find_books_by_subject(self, query):
     try:

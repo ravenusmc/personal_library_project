@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import cheerio from 'cheerio';
 import store from '@/store/index';
 
 
@@ -27,7 +28,6 @@ const actions = {
 			.then((res) => {
         console.log(res.data)
 				if (res.data.length === 0 || res.data == null) {
-          console.log('here')
           commit('setShowBooks', false)
           commit('setBooks', res.data)
 				} else {

@@ -11,6 +11,7 @@
           <p><strong>Title:</strong> {{ book[1] }}</p>
           <p><strong>Author:</strong> {{ book[2] }} {{ book[3] }}</p>
           <p><strong>Location:</strong> {{ book[10] }}</p>
+          <p><strong>Short Description:</strong>{{ book[11] }}</p>
         </div>
 
         <!-- Hidden drawer content -->
