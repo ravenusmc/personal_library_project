@@ -20,6 +20,15 @@
         </div>
 
         <div class="form-group">
+          <label>
+            <input type="radio" v-model="searchType" value="Author" /> Yes
+          </label>
+          <label>
+            <input type="radio" v-model="searchType" value="Title" /> No
+          </label>
+        </div>
+
+        <div class="form-group">
           <button class="styled-button" type="submit">Search</button>
         </div>
       </form>
