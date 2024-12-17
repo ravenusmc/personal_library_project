@@ -20,11 +20,12 @@
         </div>
 
         <div class="form-group">
+          <p>Show Description: (Will take longer)</p>
           <label>
-            <input type="radio" v-model="searchType" value="Author" /> Yes
+            <input type="radio" v-model="showDescription" value="Yes" /> Yes
           </label>
           <label>
-            <input type="radio" v-model="searchType" value="Title" /> No
+            <input type="radio" v-model="showDescription" value="No" /> No
           </label>
         </div>
 
@@ -44,7 +45,8 @@ export default {
   data() {
     return {
       search: "",
-      searchType: "Author", // Default search type
+      searchType: "Author", 
+      showDescription: "No", 
     };
   },
   methods: {
@@ -57,7 +59,9 @@ export default {
       const payload = {
         query: this.search,
         type: this.searchType,
+        description: this.showDescription,
       };
+      console.log(payload)
       this.submitSearchQueryToServer({ payload });
     },
   },
