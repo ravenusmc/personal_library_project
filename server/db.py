@@ -37,26 +37,7 @@ class Connection():
             print(f"Error: {err}")
             return None
   
-  # def find_book_by_title(self, query):
-  #   try:
-  #       # Prepare the SQL query
-  #       sql_query = """
-  #           SELECT * FROM books 
-  #           WHERE Title LIKE %s
-  #       """
-  #       # Using parameterized queries to prevent SQL injection
-  #       like_query = f"%{query}%"
-  #       self.cursor.execute(sql_query, (like_query, ))
-        
-  #       # Fetch all matching rows
-  #       results = self.cursor.fetchone()
-  #       print(results)
-  #       # Return the results
-  #       return results
-  #   except mysql.connector.Error as err:
-  #           print(f"Error: {err}")
-  #           return None
-  def find_book_by_title(self, query):
+  def find_book_by_title(self, query, description):
     try:
         # Prepare the SQL query
         sql_query = """
@@ -69,8 +50,9 @@ class Connection():
         
         # Fetch the first matching row
         result = self.cursor.fetchone()
-
-        if result:
+        print(description)
+        if result and description:
+            print('Here')
             # Assume the 9th element in the result is the URL
             url = result[9] if len(result) > 9 else None
 

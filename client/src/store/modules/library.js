@@ -26,7 +26,6 @@ const actions = {
 		const path = 'http://localhost:5000/getBooks';
 		axios.post(path, payload)
 			.then((res) => {
-        console.log(res.data)
 				if (res.data.length === 0 || res.data == null) {
           commit('setShowBooks', false)
           commit('setBooks', res.data)

@@ -56,12 +56,16 @@ export default {
         alert("Please enter a search query.");
         return;
       }
+      if (this.showDescription === 'Yes') {
+        this.showDescription = true
+      } else {
+        this.showDescription = false
+      }
       const payload = {
         query: this.search,
         type: this.searchType,
         description: this.showDescription,
       };
-      console.log(payload)
       this.submitSearchQueryToServer({ payload });
     },
   },

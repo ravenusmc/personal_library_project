@@ -18,10 +18,11 @@ def get_Books_Data():
     db_obj = Connection()
     post_data = request.get_json()
     query = post_data['query']
+    description = post_data['description']
     if post_data['type'] == 'Author':
       results = db_obj.find_book_by_author(query)
     elif post_data['type'] == 'Title':
-      results = db_obj.find_book_by_title(query)
+      results = db_obj.find_book_by_title(query, description)
     else: 
       results = db_obj.find_books_by_subject(query)
     return jsonify(results)
