@@ -50,7 +50,6 @@ class Connection():
         
         # Fetch the first matching row
         result = self.cursor.fetchone()
-        print(description)
         if result and description:
             print('Here')
             # Assume the 9th element in the result is the URL
