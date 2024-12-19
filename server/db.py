@@ -51,7 +51,6 @@ class Connection():
         # Fetch the first matching row
         result = self.cursor.fetchone()
         if result and description:
-            print('Here')
             # Assume the 9th element in the result is the URL
             url = result[9] if len(result) > 9 else None
 
@@ -68,8 +67,7 @@ class Connection():
         else:
             print("No book found matching the query.")
 
-        # Return the updated result
-        print(result)
+        
         return result
     except mysql.connector.Error as err:
         print(f"Error: {err}")
