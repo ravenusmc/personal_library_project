@@ -19,7 +19,7 @@ class Support:
             # Find the description in the div with class 'read-more__content'
             description_div = soup.find('div', class_='read-more__content')
             description = description_div.get_text(strip=True) if description_div else "Description not found."
-            
+
             return description
         except requests.RequestException as e:
             print(f"Error fetching description: {e}")

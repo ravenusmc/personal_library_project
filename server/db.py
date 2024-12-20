@@ -18,7 +18,7 @@ class Connection():
     self.cursor = self.conn.cursor()
   
     
-  def find_book_by_author(self, query):
+  def find_book_by_author(self, query, description):
     try:
         # Prepare the SQL query
         sql_query = """
@@ -31,8 +31,27 @@ class Connection():
         
         # Fetch all matching rows
         results = self.cursor.fetchall()
-        # Return the results
-        return results
+        if results and description:
+            updated_results = []
+            for result in results: 
+                # Assume the 9th element in the result is the URL
+                url = result[9] if len(result) > 9 else None
+
+                if url:
+                    # Fetch the description using the Support class
+                    support = Support()
+                    description = support.fetch_description(url)
+                    
+                    # Append the description to the result
+                    result = list(result)  # Convert tuple to list for modification
+                    result.append(description)
+                else:
+                    result.append("No URL found in the result.")
+                updated_results.append(result)
+        else:
+            print("No book found matching the query.")
+        print(updated_results)
+        return updated_results
     except mysql.connector.Error as err:
             print(f"Error: {err}")
             return None
@@ -53,12 +72,10 @@ class Connection():
         if result and description:
             # Assume the 9th element in the result is the URL
             url = result[9] if len(result) > 9 else None
-
             if url:
                 # Fetch the description using the Support class
                 support = Support()
                 description = support.fetch_description(url)
-                
                 # Append the description to the result
                 result = list(result)  # Convert tuple to list for modification
                 result.append(description)
@@ -66,8 +83,6 @@ class Connection():
                 print("No URL found in the result.")
         else:
             print("No book found matching the query.")
-
-        
         return result
     except mysql.connector.Error as err:
         print(f"Error: {err}")
