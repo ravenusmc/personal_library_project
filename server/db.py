@@ -48,10 +48,10 @@ class Connection():
                 else:
                     result.append("No URL found in the result.")
                 updated_results.append(result)
+            return updated_results
         else:
             print("No book found matching the query.")
-        print(updated_results)
-        return updated_results
+        return results
     except mysql.connector.Error as err:
             print(f"Error: {err}")
             return None
