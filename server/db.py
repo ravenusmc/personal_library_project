@@ -89,7 +89,7 @@ class Connection():
         return None
 
   
-  def find_books_by_subject(self, query):
+  def find_books_by_subject(self, query, description):
     try:
         # Prepare the SQL query
         sql_query = """
@@ -102,6 +102,27 @@ class Connection():
         
         # Fetch all matching rows
         results = self.cursor.fetchall()
+        if results and description:
+            updated_results = []
+            for result in results: 
+                # Assume the 9th element in the result is the URL
+                url = result[9] if len(result) > 9 else None
+
+                if url:
+                    # Fetch the description using the Support class
+                    support = Support()
+                    description = support.fetch_description(url)
+                    
+                    # Append the description to the result
+                    result = list(result)  # Convert tuple to list for modification
+                    result.append(description)
+                else:
+                    result.append("No URL found in the result.")
+                updated_results.append(result)
+            return updated_results
+        else:
+            print("No book found matching the query.")
+        return results
         # Return the results
         return results
     except mysql.connector.Error as err:

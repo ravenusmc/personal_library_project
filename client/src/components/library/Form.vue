@@ -20,7 +20,7 @@
         </div>
 
         <div class="form-group">
-          <p>Show Description: (Will take longer)</p>
+          <p>Show Description: (May take longer)</p>
           <label>
             <input type="radio" v-model="showDescription" value="Yes" /> Yes
           </label>
