@@ -17,6 +17,9 @@
           <label>
             <input type="radio" v-model="searchType" value="Subject" /> Subject
           </label>
+          <label>
+            <input type="radio" v-model="searchType" value="Location" /> Location
+          </label>
         </div>
 
         <div class="form-group">
