@@ -18,7 +18,7 @@ from db import *
 class BuildCSVFile():
 
   def __init__(self):
-      self.data = pd.read_csv('books.csv')
+      self.data = pd.read_csv('books_2.csv')
   
   def place_ISBN_in_list(self):
       return self.data['ISBN'].tolist()

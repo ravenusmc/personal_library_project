@@ -23,8 +23,10 @@ def get_Books_Data():
       results = db_obj.find_book_by_author(query, description)
     elif post_data['type'] == 'Title':
       results = db_obj.find_book_by_title(query, description)
-    else: 
+    elif post_data['type'] == 'Subject': 
       results = db_obj.find_books_by_subject(query, description)
+    else: 
+      print('Here') 
     return jsonify(results)
 
 if __name__ == '__main__':
