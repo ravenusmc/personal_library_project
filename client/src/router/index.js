@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import BookDetails from "@/components/library/BookDetails.vue";
 
 Vue.use(VueRouter)
 
@@ -22,7 +23,12 @@ const routes = [
     path: '/library',
     name: 'library',
     component: () => import('../views/Library.vue')
-  }
+  },
+  {
+    path: "/book/:id",
+    name: "BookDetails",
+    component: BookDetails,
+  },
 ]
 
 const router = new VueRouter({

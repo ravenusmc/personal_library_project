@@ -7,7 +7,9 @@
           class="outside-drawer-div"
           @click="toggleDrawer(index)"
         >
-          <h3>Book {{ index + 1 }}:</h3>
+          <router-link :to="{ name: 'BookDetails', params: { id: index } }">
+              Book {{ index + 1 }}: {{ book[1] }}
+            </router-link>
           <p><strong>Title:</strong> {{ book[1] }}</p>
           <p><strong>Author:</strong> {{ book[2] }} {{ book[3] }}</p>
           <p><strong>Location:</strong> {{ book[10] }}</p>

@@ -8,7 +8,7 @@ import store from '@/store/index';
 Vue.use(Vuex);
 
 const data = {
-	books: [],
+  books: [],
   showBooks: true,
 };
 
@@ -18,6 +18,7 @@ const getters = {
 	  return Array.isArray(state.books[0]) ? state.books : state.books.length ? [state.books] : [];
 	},
   showBooks: (state) => state.showBooks,
+  bookById: (state) => (id) => state.books[id],
   };
 
 const actions = {
