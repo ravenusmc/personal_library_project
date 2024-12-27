@@ -24,20 +24,8 @@
             <input v-model="updatedBook.location" id="location" type="text" />
           </div>
           <div>
-            <label for="description">Description:</label>
-            <textarea v-model="updatedBook.description" id="description"></textarea>
-          </div>
-          <div>
-            <label for="callNumber">Call Number:</label>
-            <input v-model="updatedBook.callNumber" id="callNumber" type="text" />
-          </div>
-          <div>
             <label for="publisher">Publisher:</label>
             <input v-model="updatedBook.publisher" id="publisher" type="text" />
-          </div>
-          <div>
-            <label for="pages">Pages:</label>
-            <input v-model="updatedBook.pages" id="pages" type="number" />
           </div>
           <div>
             <label for="link">Link:</label>
