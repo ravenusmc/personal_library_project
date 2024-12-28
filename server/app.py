@@ -29,5 +29,14 @@ def get_Books_Data():
       print('Here') 
     return jsonify(results)
 
+@app.route('/updateBook', methods=['POST'])
+def updateBook():
+  if request.method == 'POST': 
+    db_obj = Connection()
+    post_data = request.get_json()
+    print('here')
+    print(post_data)
+  return jsonify('5')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+  app.run(debug=True)

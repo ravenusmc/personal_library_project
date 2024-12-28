@@ -27,10 +27,6 @@
             <label for="publisher">Publisher:</label>
             <input v-model="updatedBook.publisher" id="publisher" type="text" />
           </div>
-          <div>
-            <label for="link">Link:</label>
-            <input v-model="updatedBook.link" id="link" type="url" />
-          </div>
           <button type="submit">Update</button>
         </form>
       </div>
@@ -42,7 +38,7 @@
   </template>
   
   <script>
-  import { mapGetters } from "vuex";
+  import { mapGetters, mapActions } from "vuex";
   
   export default {
     name: "BookDetails",
@@ -66,11 +62,13 @@
       },
     },
     methods: {
+      ...mapActions("library", ["updateBookData"]),
       // Initialize the form with existing book data when the component is created
       initUpdateForm() {
         const book = this.book;
         if (book) {
           this.updatedBook = {
+            id: book[0],
             author: `${book[2]} ${book[3]}`,
             location: book[10],
             description: book[11],
@@ -82,8 +80,10 @@
         }
       },
       updateBook() {
-        // Implement the update logic here, such as making an API call or committing to Vuex
-        console.log("Updated book data:", this.updatedBook);
+        const payload = {
+          updateData: this.updatedBook,
+        };
+        this.updateBookData({ payload });
         // Example: this.$store.dispatch("updateBook", this.updatedBook);
       },
     },
