@@ -12,22 +12,37 @@
       <p><strong>Link:</strong> <a :href="book[9]" target="_blank">View Book</a></p>
   
       <!-- Update form -->
-      <div>
+      <div class="form-container">
         <h3>Update Book Information</h3>
         <form @submit.prevent="updateBook">
-          <div>
+          <div class="form-group">
             <label for="author">Author:</label>
-            <input v-model="updatedBook.author" id="author" type="text" />
+            <input
+              :placeholder="updatedBook.author"
+              v-model.lazy="updatedBook.author"
+              id="author"
+              type="text"
+            />
           </div>
-          <div>
+          <div class="form-group">
             <label for="location">Location:</label>
-            <input v-model="updatedBook.location" id="location" type="text" />
+            <input 
+              :placeholder="updatedBook.location"
+              v-model="updatedBook.location" 
+              id="location" 
+              type="text" 
+            />
           </div>
-          <div>
+          <div class="form-group">
             <label for="publisher">Publisher:</label>
-            <input v-model="updatedBook.publisher" id="publisher" type="text" />
+            <input 
+              :placeholder="updatedBook.publisher"
+              v-model="updatedBook.publisher" 
+              id="publisher" 
+              type="text" 
+            />
           </div>
-          <button type="submit">Update</button>
+          <button class="submit-btn" type="submit">Update</button>
         </form>
       </div>
     </div>
@@ -37,7 +52,7 @@
     </div>
   </template>
   
-  <script>
+<script>
   import { mapGetters, mapActions } from "vuex";
   
   export default {
@@ -47,11 +62,7 @@
         updatedBook: {
           author: "",
           location: "",
-          description: "",
-          callNumber: "",
           publisher: "",
-          pages: null,
-          link: "",
         },
       };
     },
@@ -71,11 +82,7 @@
             id: book[0],
             author: `${book[2]} ${book[3]}`,
             location: book[10],
-            description: book[11],
-            callNumber: book[4],
             publisher: book[6],
-            pages: book[8],
-            link: book[9],
           };
         }
       },
@@ -84,7 +91,6 @@
           updateData: this.updatedBook,
         };
         this.updateBookData({ payload });
-        // Example: this.$store.dispatch("updateBook", this.updatedBook);
       },
     },
     watch: {
@@ -94,6 +100,101 @@
       this.initUpdateForm();
     },
   };
-  </script>
+</script>
+
+<style scoped> 
+/* General container styling */
+.form-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+.form-container h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+/* Group styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Input field styling */
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+/* Input hover and focus states */
+.form-group input:hover {
+  border-color: #999;
+}
+
+.form-group input:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 3px #007BFF;
+}
+
+/* Submit button styling */
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Submit button hover state */
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Add responsive design */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 15px;
+  }
+
+  .form-container h3 {
+    font-size: 1.2em;
+  }
+
+  .form-group input {
+    font-size: 0.9em;
+  }
+
+  .submit-btn {
+    font-size: 0.9em;
+  }
+}
+
+</style>
   
   
