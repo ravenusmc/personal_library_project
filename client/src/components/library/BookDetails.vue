@@ -1,15 +1,19 @@
 <template>
     <div v-if="book">
-      <h1>{{ book[1] }}</h1>
-      <p><strong>Author:</strong> {{ book[2] }} {{ book[3] }}</p>
-      <p><strong>Location:</strong> {{ book[10] }}</p>
-      <p><strong>Description:</strong> {{ book[11] }}</p>
-      <p><strong>Call Number:</strong> {{ book[4] }}</p>
-      <p><strong>Published Date:</strong> {{ new Date(book[5]).toLocaleDateString() }}</p>
-      <p><strong>Publisher:</strong> {{ book[6] }}</p>
-      <p><strong>Subject:</strong> {{ book[7] }}</p>
-      <p><strong>Pages:</strong> {{ book[8] }}</p>
-      <p><strong>Link:</strong> <a :href="book[9]" target="_blank">View Book</a></p>
+      <div class="book-details" style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9; font-family: Arial, sans-serif; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+  <h1 style="color: #333; font-size: 1.8rem; margin-bottom: 10px;">{{ book[1] }}</h1>
+  <p style="margin: 5px 0;"><strong>Author:</strong> {{ book[2] }} {{ book[3] }}</p>
+  <p style="margin: 5px 0;"><strong>Location:</strong> {{ book[10] }}</p>
+  <p style="margin: 5px 0;"><strong>Description:</strong> {{ book[11] }}</p>
+  <p style="margin: 5px 0;"><strong>Call Number:</strong> {{ book[4] }}</p>
+  <p style="margin: 5px 0;"><strong>Published Date:</strong> {{ new Date(book[5]).toLocaleDateString() }}</p>
+  <p style="margin: 5px 0;"><strong>Publisher:</strong> {{ book[6] }}</p>
+  <p style="margin: 5px 0;"><strong>Subject:</strong> {{ book[7] }}</p>
+  <p style="margin: 5px 0;"><strong>Pages:</strong> {{ book[8] }}</p>
+  <p style="margin: 5px 0;"><strong>Link:</strong> 
+    <a :href="book[9]" target="_blank" style="color: #007bff; text-decoration: none;">View Book</a>
+  </p>
+</div>
   
       <!-- Update form -->
       <div class="form-container">
@@ -103,6 +107,38 @@
 </script>
 
 <style scoped> 
+.book-details {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-details h1 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.book-details p {
+  margin: 5px 0;
+}
+
+.book-details a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.book-details a:hover {
+  text-decoration: underline;
+}
+
+
+/* CSS Code for form */
 /* General container styling */
 .form-container {
   max-width: 400px;
