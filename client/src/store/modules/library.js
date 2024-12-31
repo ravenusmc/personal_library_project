@@ -41,7 +41,6 @@ const actions = {
 	},
 
 	updateBookData: ({ commit }, { payload }) => {
-    console.log('here')
     console.log(payload)
 		const path = 'http://localhost:5000/updateBook';
 		axios.post(path, payload)

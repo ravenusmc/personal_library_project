@@ -1,29 +1,38 @@
 <template>
     <div v-if="book">
       <div class="book-details" style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9; font-family: Arial, sans-serif; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-  <h1 style="color: #333; font-size: 1.8rem; margin-bottom: 10px;">{{ book[1] }}</h1>
-  <p style="margin: 5px 0;"><strong>Author:</strong> {{ book[2] }} {{ book[3] }}</p>
-  <p style="margin: 5px 0;"><strong>Location:</strong> {{ book[10] }}</p>
-  <p style="margin: 5px 0;"><strong>Description:</strong> {{ book[11] }}</p>
-  <p style="margin: 5px 0;"><strong>Call Number:</strong> {{ book[4] }}</p>
-  <p style="margin: 5px 0;"><strong>Published Date:</strong> {{ new Date(book[5]).toLocaleDateString() }}</p>
-  <p style="margin: 5px 0;"><strong>Publisher:</strong> {{ book[6] }}</p>
-  <p style="margin: 5px 0;"><strong>Subject:</strong> {{ book[7] }}</p>
-  <p style="margin: 5px 0;"><strong>Pages:</strong> {{ book[8] }}</p>
-  <p style="margin: 5px 0;"><strong>Link:</strong> 
-    <a :href="book[9]" target="_blank" style="color: #007bff; text-decoration: none;">View Book</a>
-  </p>
-</div>
+        <h1 style="color: #333; font-size: 1.8rem; margin-bottom: 10px;">{{ book[1] }}</h1>
+        <p style="margin: 5px 0;"><strong>Author:</strong> {{ book[2] }} {{ book[3] }}</p>
+        <p style="margin: 5px 0;"><strong>Location:</strong> {{ book[10] }}</p>
+        <p style="margin: 5px 0;"><strong>Description:</strong> {{ book[11] }}</p>
+        <p style="margin: 5px 0;"><strong>Call Number:</strong> {{ book[4] }}</p>
+        <p style="margin: 5px 0;"><strong>Published Date:</strong> {{ new Date(book[5]).toLocaleDateString() }}</p>
+        <p style="margin: 5px 0;"><strong>Publisher:</strong> {{ book[6] }}</p>
+        <p style="margin: 5px 0;"><strong>Subject:</strong> {{ book[7] }}</p>
+        <p style="margin: 5px 0;"><strong>Pages:</strong> {{ book[8] }}</p>
+        <p style="margin: 5px 0;"><strong>Link:</strong> 
+          <a :href="book[9]" target="_blank" style="color: #007bff; text-decoration: none;">View Book</a>
+        </p>
+      </div>
   
       <!-- Update form -->
       <div class="form-container">
         <h3>Update Book Information</h3>
         <form @submit.prevent="updateBook">
           <div class="form-group">
-            <label for="author">Author:</label>
+            <label for="author">Author First Name:</label>
             <input
-              :placeholder="updatedBook.author"
-              v-model.lazy="updatedBook.author"
+              :placeholder="updatedBook.firstName"
+              v-model.lazy="updatedBook.firstName"
+              id="author"
+              type="text"
+            />
+          </div>
+          <div class="form-group">
+            <label for="author">Author Last Name:</label>
+            <input
+              :placeholder="updatedBook.lastName"
+              v-model.lazy="updatedBook.lastName"
               id="author"
               type="text"
             />
@@ -84,7 +93,9 @@
         if (book) {
           this.updatedBook = {
             id: book[0],
-            author: `${book[2]} ${book[3]}`,
+            firstName: book[2], 
+            lastName: book[3],
+            // author: `${book[2]} ${book[3]}`,
             location: book[10],
             publisher: book[6],
           };

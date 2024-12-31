@@ -129,4 +129,19 @@ class Connection():
             print(f"Error: {err}")
             return None
     
-
+  def update_book(self, id_, firstName, lastName, location, publisher):
+    query = """
+        UPDATE books
+        SET firstName = %s, lastName = %s, location = %s, publisher = %s
+        WHERE book_id = %s
+        """ 
+    values = (firstName, lastName, location, publisher, id_)
+    try:
+        self.cursor.execute(query, values)
+        self.conn.commit()
+        print(f"Book with ID {id_} updated successfully.")
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+    finally:
+        self.cursor.close()
+        self.conn.close()
