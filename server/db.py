@@ -128,6 +128,46 @@ class Connection():
     except mysql.connector.Error as err:
             print(f"Error: {err}")
             return None
+  
+  def find_books_by_location(self, query, description):
+    try:
+        # Prepare the SQL query
+        sql_query = """
+            SELECT * FROM books 
+            WHERE location LIKE %s
+        """
+        # Using parameterized queries to prevent SQL injection
+        like_query = f"%{query}%"
+        self.cursor.execute(sql_query, (like_query, ))
+        
+        # Fetch all matching rows
+        results = self.cursor.fetchall()
+        if results and description:
+            updated_results = []
+            for result in results: 
+                # Assume the 9th element in the result is the URL
+                url = result[9] if len(result) > 9 else None
+
+                if url:
+                    # Fetch the description using the Support class
+                    support = Support()
+                    description = support.fetch_description(url)
+                    
+                    # Append the description to the result
+                    result = list(result)  # Convert tuple to list for modification
+                    result.append(description)
+                else:
+                    result.append("No URL found in the result.")
+                updated_results.append(result)
+            return updated_results
+        else:
+            print("No book found matching the query.")
+        return results
+        # Return the results
+        return results
+    except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            return None
     
   def update_book(self, id_, firstName, lastName, location, publisher):
     query = """

@@ -26,7 +26,8 @@ def get_Books_Data():
     elif post_data['type'] == 'Subject': 
       results = db_obj.find_books_by_subject(query, description)
     else: 
-      print('Here') 
+      print(description)
+      results = db_obj.find_books_by_location(query, description)
     return jsonify(results)
 
 @app.route('/updateBook', methods=['POST'])
