@@ -79,10 +79,23 @@
         },
       };
     },
+    // computed: {
+    //   ...mapGetters("library", ["bookById"]),
+    //   book() {
+    //     const books = Array.isArray(this.$store.getters.books[0])
+    //       ? this.$store.getters.books[0]
+    //       : this.$store.getters.books;
+    //     return books[this.$route.params.id] || null;
+    //   },
+    // },
     computed: {
       ...mapGetters("library", ["bookById"]),
       book() {
-        return this.bookById(this.$route.params.id);
+        const book = this.bookById(this.$route.params.id);
+        if (!book) {
+          this.error = "Book not found.";
+        }
+        return book || null;
       },
     },
     methods: {
@@ -109,10 +122,16 @@
       },
     },
     watch: {
-      book: "initUpdateForm",
+      book(newBook) {
+        if (newBook) {
+          this.initUpdateForm();
+        }
+      },
     },
     created() {
-      this.initUpdateForm();
+      if (this.book) {
+        this.initUpdateForm();
+      }
     },
   };
 </script>

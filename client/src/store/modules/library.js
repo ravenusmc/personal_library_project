@@ -18,7 +18,12 @@ const getters = {
 	  return Array.isArray(state.books[0]) ? state.books : state.books.length ? [state.books] : [];
 	},
   showBooks: (state) => state.showBooks,
-  bookById: (state) => (id) => state.books[id],
+  // bookById: (state) => (id) => state.books[id],
+  bookById: (state) => (id) => {
+    const books = Array.isArray(state.books[0]) ? state.books[0] : state.books;
+    console.log(books)
+    return books[id] || null;
+  },
   };
 
 const actions = {
@@ -56,9 +61,9 @@ const actions = {
 
 const mutations = {
 
-	setBooks(state, value) {
-		state.books = value;
-	},
+  setBooks(state, value) {
+    state.books = Array.isArray(value) ? value : [value];
+  },
 
   setShowBooks(state, value) {
     state.showBooks = value; 
