@@ -95,7 +95,6 @@ export default {
           id: book[0],
           firstName: book[2], 
           lastName: book[3],
-          // author: `${book[2]} ${book[3]}`,
           location: book[10],
           publisher: book[6],
         };
