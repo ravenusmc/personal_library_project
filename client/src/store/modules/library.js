@@ -18,13 +18,20 @@ const getters = {
 	  return Array.isArray(state.books[0]) ? state.books : state.books.length ? [state.books] : [];
 	},
   showBooks: (state) => state.showBooks,
-  // bookById: (state) => (id) => state.books[id],
-  bookById: (state) => (id) => {
-    const books = Array.isArray(state.books[0]) ? state.books[0] : state.books;
-    console.log(books)
-    return books[id] || null;
-  },
-  };
+  bookById: (state) => (id) => state.books[id],
+  // bookById: (state) => (id) => {
+  //     console.log("State Books:", state.books);
+  //     const books = Array.isArray(state.books[0]) ? state.books[0] : state.books;
+  //     console.log("Processed Books:", books);
+  //     return books[id] || null;
+  //   },
+  // bookById: (state) => (id) => {
+  //   const books = Array.isArray(state.books[0]) && state.books.length === 1
+  //     ? state.books[0] // Flatten single nested array
+  //     : state.books;
+  //   return books[id] || null;
+  // },
+};
 
 const actions = {
 
@@ -62,8 +69,27 @@ const actions = {
 const mutations = {
 
   setBooks(state, value) {
-    state.books = Array.isArray(value) ? value : [value];
+    console.log(value)
+    let array_holder = []
+    console.log(value.length)
+    if (value.length === 11) {
+      console.log('here')
+      array_holder.push(value)
+      console.log(array_holder)
+      state.books = array_holder
+    }else {
+      console.log('not here')
+      state.books = Array.isArray(value) ? value : [value];
+    }
+    
+    console.log(state.books.length)
   },
+
+  // setBooks(state, value) {
+  //   // Always normalize to an array of books
+  //   state.books = Array.isArray(value) ? value : [value];
+  //   console.log("Normalized Books:", state.books);
+  // },
 
   setShowBooks(state, value) {
     state.showBooks = value; 
