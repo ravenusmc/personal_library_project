@@ -1,37 +1,40 @@
 <template>
   <div>
-    <div v-for="(book, index) in books" :key="index" class="book">
-      <div class="outer-book-div">
-        <!-- Outside drawer content -->
-        <div 
-          class="outside-drawer-div"
-          @click="toggleDrawer(index)"
-        >
-          <router-link :to="{ name: 'BookDetails', params: { id: index } }">
-              Book {{ index + 1 }}: {{ book[1] }}
-            </router-link>
-          <p><strong>Title:</strong> {{ book[1] }}</p>
-          <p><strong>Author:</strong> {{ book[2] }} {{ book[3] }}</p>
-          <p><strong>Location:</strong> {{ book[10] }}</p>
-          <p><strong>Short Description:</strong>{{ book[11] }}</p>
-        </div>
-
-        <!-- Hidden drawer content -->
-        <transition name="slide">
+    <div class="book-display-area">
+      <div v-for="(book, index) in books" :key="index" class="book">
+        <div class="outer-book-div">
+          <!-- Outside drawer content -->
           <div 
-            v-if="openDrawerIndex === index" 
-            class="drawer-div"
+            class="outside-drawer-div"
+            @click="toggleDrawer(index)"
           >
-            <p><strong>Call Number:</strong> {{ book[4] }}</p>
-            <p><strong>Published Date:</strong> {{ new Date(book[5]).toLocaleDateString() }}</p>
-            <p><strong>Publisher:</strong> {{ book[6] }}</p>
-            <p><strong>Subject:</strong> {{ book[7] }}</p>
-            <p><strong>Pages:</strong> {{ book[8] }}</p>
-            <p><strong>Link:</strong> <a :href="book[9]" target="_blank">View Book</a></p>
+            <router-link :to="{ name: 'BookDetails', params: { id: index } }">
+                Book {{ index + 1 }}: {{ book[1] }}
+              </router-link>
+            <p><strong>Title:</strong> {{ book[1] }}</p>
+            <p><strong>Author:</strong> {{ book[2] }} {{ book[3] }}</p>
+            <p><strong>Location:</strong> {{ book[10] }}</p>
+            <p><strong>Short Description:</strong> {{ book[11] }}</p>
           </div>
-        </transition>
-      </div>
+
+          <!-- Hidden drawer content -->
+          <transition name="slide">
+            <div 
+              v-if="openDrawerIndex === index" 
+              class="drawer-div"
+            >
+              <p><strong>Call Number:</strong> {{ book[4] }}</p>
+              <p><strong>Published Date:</strong> {{ new Date(book[5]).toLocaleDateString() }}</p>
+              <p><strong>Publisher:</strong> {{ book[6] }}</p>
+              <p><strong>Subject:</strong> {{ book[7] }}</p>
+              <p><strong>Pages:</strong> {{ book[8] }}</p>
+              <p><strong>Link:</strong> <a :href="book[9]" target="_blank">View Book</a></p>
+            </div>
+          </transition>
+        </div>
     </div>
+    </div>
+
   </div>
 </template>
 
@@ -60,16 +63,22 @@ export default {
 </script>
 
 <style scoped>
+.book-display-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .book {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .outer-book-div {
   margin-bottom: 1rem;
-  width: 45%;
+  width: 75%;
 }
 
 .outside-drawer-div {
