@@ -57,7 +57,7 @@ const actions = {
 const mutations = {
 
   setBooks(state, value) {
-    if (value.length === 11) {
+    if (value.length === 11 || value.length === 12) {
       // Handle case where a single book is returned
       state.books = [value];
     } else {

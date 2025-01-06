@@ -5,6 +5,7 @@
           <a class="navlink"><router-link class="link-style" to="/">Home</router-link></a>
           <a class="navlink"><router-link class="link-style" to="/about">About</router-link></a>
           <a class="navlink"><router-link class="link-style" to="/library">The Library</router-link></a>
+          <a class="navlink"><router-link class="link-style" to="/addbook">Add Book</router-link></a>
         </div>
         <div class="navlinks-right">
           <a v-if="!loginFlag" class="navlink"><router-link class="link-style" to="/login">Login</router-link></a>
