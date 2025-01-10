@@ -55,7 +55,7 @@ class BuildCSVFile():
 
                 # Truncate subjects and debug the length
                 subjects = subjects[:max_subjects_length]
-                print(f"Truncated subjects length: {len(subjects)}")  # Debugging
+                # print(f"Truncated subjects length: {len(subjects)}")  # Debugging
 
                 pagination = details.get("pagination", "N/A")
                 info_url = data[book_key].get("info_url", "N/A")
