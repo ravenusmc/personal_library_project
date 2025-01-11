@@ -34,7 +34,8 @@ def updateBook():
   if request.method == 'POST': 
     db_obj = Connection()
     post_data = request.get_json()
-    update_data = post_data['updateData']
+    print(post_data)
+    update_data = post_data['payload']['updateData']
     id_, firstName, lastName, location, publisher = update_data['id'], update_data['firstName'],update_data['lastName'], update_data['location'], update_data['publisher']
     db_obj.update_book(id_, firstName, lastName, location, publisher)
   return jsonify('5')

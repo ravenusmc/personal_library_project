@@ -40,16 +40,36 @@ const actions = {
 			});
 	},
 
-	updateBookData: ({ commit }, { payload }) => {
+	// updateBookData: ({ commit }, { payload }) => {
+	// 	const path = 'http://localhost:5000/updateBook';
+	// 	axios.post(path, payload)
+	// 		.then((res) => {
+  //       	console.log(res.data)
+	// 		})
+	// 		.catch((error) => {
+	// 			console.log(error);
+	// 		});
+	// },
+  updateBookData: async ({ commit }, payload) => {
+    const path = 'http://localhost:5000/updateBook';
+    try {
+      const response = await axios.post(path, payload);
+      console.log(response.data); // Handle the response as needed
+    } catch (error) {
+      console.error('Error updating book data:', error);
+    }
+  },
+
+	addBook: ({ commit }, { payload }) => {
     console.log(payload)
-		const path = 'http://localhost:5000/updateBook';
-		axios.post(path, payload)
-			.then((res) => {
-        console.log(res.data)
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		const path = 'http://localhost:5000/addBook';
+    axios.post(path, payload)
+    .then((res) => {
+
+    })
+    .catch(( error ) => {
+      console.log(error)
+    });
 	},
 
 };
@@ -68,7 +88,7 @@ const mutations = {
   
   setShowBooks(state, value) {
     state.showBooks = value; 
-  }
+  },
 
 };
 
