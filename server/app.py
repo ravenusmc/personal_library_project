@@ -34,10 +34,18 @@ def updateBook():
   if request.method == 'POST': 
     db_obj = Connection()
     post_data = request.get_json()
-    print(post_data)
     update_data = post_data['payload']['updateData']
     id_, firstName, lastName, location, publisher = update_data['id'], update_data['firstName'],update_data['lastName'], update_data['location'], update_data['publisher']
     db_obj.update_book(id_, firstName, lastName, location, publisher)
+  return jsonify('5')
+
+@app.route('/addBook', methods=['POST'])
+def addBook():
+  if request.method == 'POST':
+    db_obj = Connection()
+    post_data = request.get_json()
+    book_data = post_data['book']
+    db_obj.add_book_to_database(book_data)
   return jsonify('5')
 
 if __name__ == '__main__':

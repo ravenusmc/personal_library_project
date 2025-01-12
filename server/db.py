@@ -185,3 +185,26 @@ class Connection():
     finally:
         self.cursor.close()
         self.conn.close()
+  
+  def add_book_to_database(self, book):
+    # SQL query for inserting data into the books table
+    self._SQL = """
+    INSERT INTO books 
+    (title, firstName, lastName, LC_Classifications, Publish_Date, Publisher, Subjects, Pagination, Info_URL, location)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+    self.cursor.execute(self._SQL, (
+          book["title"],
+          book['firstName'],
+          book['lastName'],
+          book["lcClassifications"],
+          book["publishDate"],
+          book["publisher"],
+          book["subjects"],
+          book["pages"],
+          book["infoUrl"],
+          book['location']
+      ))
+    # Commit all changes to the database
+    self.conn.commit()
+    print('Book Insert! YAY!')

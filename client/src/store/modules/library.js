@@ -54,7 +54,6 @@ const actions = {
     const path = 'http://localhost:5000/updateBook';
     try {
       const response = await axios.post(path, payload);
-      console.log(response.data); // Handle the response as needed
     } catch (error) {
       console.error('Error updating book data:', error);
     }
@@ -65,7 +64,7 @@ const actions = {
 		const path = 'http://localhost:5000/addBook';
     axios.post(path, payload)
     .then((res) => {
-
+      console.log(res.data)
     })
     .catch(( error ) => {
       console.log(error)
