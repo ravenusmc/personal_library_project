@@ -55,7 +55,10 @@
             type="text" 
           />
         </div>
-        <button class="submit-btn" type="submit">Update</button>
+        <button class="submit-btn" type="submit">Update Book</button>
+      </form>
+      <form @submit.prevent="deleteBook">
+        <button class="submit-btn-delete" type="submit">Delete Book</button>
       </form>
     </div>
   </div>
@@ -106,6 +109,9 @@ export default {
       };
       this.updateBookData({ payload });
     },
+    deleteBook() {
+      console.log("DELETE!!!")
+    }
   },
   watch: {
     book: "initUpdateForm",
@@ -206,6 +212,24 @@ transition: background-color 0.3s;
 /* Submit button hover state */
 .submit-btn:hover {
 background-color: #0056b3;
+}
+
+.submit-btn-delete {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #e20e0e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+/* Submit button hover state */
+.submit-btn-delete:hover {
+background-color: #d70652;
 }
 /* Add responsive design */
 @media (max-width: 600px) {

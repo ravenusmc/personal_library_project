@@ -205,6 +205,6 @@ class Connection():
           book["infoUrl"],
           book['location']
       ))
-    # Commit all changes to the database
+    # Commit changes to the database
     self.conn.commit()
     print('Book Insert! YAY!')
