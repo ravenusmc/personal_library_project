@@ -89,7 +89,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions("library", ["updateBookData"]),
+    ...mapActions("library", ["updateBookData", "deleteBookAction"]),
     // Initialize the form with existing book data when the component is created
     initUpdateForm() {
       const book = this.book;
@@ -110,7 +110,10 @@ export default {
       this.updateBookData({ payload });
     },
     deleteBook() {
-      console.log("DELETE!!!")
+      const payload = {
+        bookID: this.book[0]
+      }
+      this.deleteBookAction({payload})
     }
   },
   watch: {

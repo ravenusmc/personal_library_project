@@ -40,16 +40,6 @@ const actions = {
 			});
 	},
 
-	// updateBookData: ({ commit }, { payload }) => {
-	// 	const path = 'http://localhost:5000/updateBook';
-	// 	axios.post(path, payload)
-	// 		.then((res) => {
-  //       	console.log(res.data)
-	// 		})
-	// 		.catch((error) => {
-	// 			console.log(error);
-	// 		});
-	// },
   updateBookData: async ({ commit }, payload) => {
     const path = 'http://localhost:5000/updateBook';
     try {
@@ -60,7 +50,6 @@ const actions = {
   },
 
 	addBook: ({ commit }, { payload }) => {
-    console.log(payload)
 		const path = 'http://localhost:5000/addBook';
     axios.post(path, payload)
     .then((res) => {
@@ -70,6 +59,18 @@ const actions = {
       console.log(error)
     });
 	},
+
+  deleteBookAction: ({ commit }, { payload }) => {
+    console.log(payload)
+    const path = 'http://localhost:5000/deleteBook';
+    axios.post(path, payload)
+    .then((res) => {
+      console.log(res.data)
+    })
+    .catch(( error ) => {
+      console.log(error)
+    });
+  }
 
 };
 

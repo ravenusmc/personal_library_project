@@ -61,3 +61,14 @@ From the provided JSON, you can extract a wealth of useful book information. Her
 - **APIs**: Building applications to fetch and display book details dynamically.
 
 Let me know if you'd like a Python script to extract and format this data! 🚀
+
+	// updateBookData: ({ commit }, { payload }) => {
+	// 	const path = 'http://localhost:5000/updateBook';
+	// 	axios.post(path, payload)
+	// 		.then((res) => {
+  //       	console.log(res.data)
+	// 		})
+	// 		.catch((error) => {
+	// 			console.log(error);
+	// 		});
+	// },
