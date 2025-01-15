@@ -48,5 +48,14 @@ def addBook():
     db_obj.add_book_to_database(book_data)
   return jsonify('5')
 
+@app.route('/deleteBook', methods=['POST'])
+def deleteBook():
+  if request.method == 'POST':
+    db_obj = Connection()
+    post_data = request.get_json()
+    db_obj.deleteBook(post_data)
+  return jsonify('5')
+
+
 if __name__ == '__main__':
   app.run(debug=True)

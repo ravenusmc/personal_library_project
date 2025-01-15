@@ -208,3 +208,6 @@ class Connection():
     # Commit changes to the database
     self.conn.commit()
     print('Book Insert! YAY!')
+  
+  def deleteBook(self, post_data):
+      
