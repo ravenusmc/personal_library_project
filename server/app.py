@@ -53,9 +53,9 @@ def deleteBook():
   if request.method == 'POST':
     db_obj = Connection()
     post_data = request.get_json()
-    db_obj.deleteBook(post_data)
+    book_id = post_data['bookID']
+    db_obj.deleteBook(book_id)
   return jsonify('5')
-
 
 if __name__ == '__main__':
   app.run(debug=True)

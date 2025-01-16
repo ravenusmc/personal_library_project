@@ -209,5 +209,12 @@ class Connection():
     self.conn.commit()
     print('Book Insert! YAY!')
   
-  def deleteBook(self, post_data):
-      
+  def deleteBook(self, book_id):
+    self._SQL = """
+    DELETE FROM books
+    WHERE book_id = %s
+    """
+    self.cursor.execute(self._SQL, (book_id, ))
+    # Commit changes to the database
+    self.conn.commit()
+    print('Book Deleted Yay!')
