@@ -215,6 +215,5 @@ class Connection():
     WHERE book_id = %s
     """
     self.cursor.execute(self._SQL, (book_id, ))
-    # Commit changes to the database
     self.conn.commit()
     print('Book Deleted Yay!')
