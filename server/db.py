@@ -214,6 +214,13 @@ class Connection():
     DELETE FROM books
     WHERE book_id = %s
     """
-    self.cursor.execute(self._SQL, (book_id, ))
-    self.conn.commit()
-    print('Book Deleted Yay!')
+    try:
+        print('TRY!')
+        self.cursor.execute(self._SQL, (book_id, ))
+        self.conn.commit()
+        print(f"Book with ID {book_id} Deleted successfully.")
+        return True
+    except mysql.connector.Error as err:
+        print("EXCEPT")
+        print(f"Error: {err}")
+        return False

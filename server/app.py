@@ -49,13 +49,22 @@ def addBook():
   return jsonify('5')
 
 @app.route('/deleteBook', methods=['POST'])
-def deleteBook():
-  if request.method == 'POST':
-    db_obj = Connection()
-    post_data = request.get_json()
-    book_id = post_data['bookID']
-    db_obj.deleteBook(book_id)
-  return jsonify('5')
+def delete_book():
+    if request.method == 'POST':
+        try:
+            db_obj = Connection()
+            post_data = request.get_json()
+            if not post_data or 'bookID' not in post_data:
+                return jsonify({'status': 'error', 'message': 'Invalid input'}), 400
+            book_id = post_data['bookID']
+            delete_success = db_obj.deleteBook(book_id) 
+            print(delete_success)
+            if delete_success:
+                return jsonify({'status': 'success', 'message': 'Book deleted successfully'}), 200
+            else:
+                return jsonify({'status': 'error', 'message': 'Book not found'}), 404
+        except Exception as e:
+            return jsonify({'status': 'error', 'message': str(e)}), 500
 
 if __name__ == '__main__':
   app.run(debug=True)

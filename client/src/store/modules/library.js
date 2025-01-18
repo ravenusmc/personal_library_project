@@ -61,15 +61,28 @@ const actions = {
 	},
 
   deleteBookAction: ({ commit }, { payload }) => {
-    console.log(payload)
     const path = 'http://localhost:5000/deleteBook';
     axios.post(path, payload)
-    .then((res) => {
-      console.log(res.data)
-    })
-    .catch(( error ) => {
-      console.log(error)
-    });
+        .then((res) => {
+            if (res.status === 200) {
+                console.log(res.data.message); // Log success message
+                // Optionally commit a mutation or dispatch an action
+            } else {
+                console.error('Unexpected response:', res);
+            }
+        })
+        .catch((error) => {
+            if (error.response) {
+                // Server responded with a status outside 2xx
+                console.error('Server error:', error.response.data.message || error.message);
+            } else if (error.request) {
+                // No response was received
+                console.error('Network error:', error.message);
+            } else {
+                // Other errors
+                console.error('Error:', error.message);
+            }
+        });
   }
 
 };

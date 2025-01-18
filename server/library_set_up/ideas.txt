@@ -72,3 +72,16 @@ Let me know if you'd like a Python script to extract and format this data! 🚀
 	// 			console.log(error);
 	// 		});
 	// },
+
+
+  // deleteBookAction: ({ commit }, { payload }) => {
+  //   console.log(payload)
+  //   const path = 'http://localhost:5000/deleteBook';
+  //   axios.post(path, payload)
+  //   .then((res) => {
+  //     console.log(res.data)
+  //   })
+  //   .catch(( error ) => {
+  //     console.log(error)
+  //   });
+  // }
