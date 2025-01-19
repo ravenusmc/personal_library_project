@@ -80,7 +80,6 @@
     methods: {
       ...mapActions("library", ["addBook"]),
       addBookToDatabase() {
-        console.log("Form submitted with data:", this.book);
         const payload = {
           book: this.book
         };

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import router from '@/router';
 import cheerio from 'cheerio';
 import store from '@/store/index';
 
@@ -66,7 +67,9 @@ const actions = {
         .then((res) => {
             if (res.status === 200) {
                 console.log(res.data.message); // Log success message
-                // Optionally commit a mutation or dispatch an action
+                let books = []
+                commit('setBooks', books)
+                router.push('/library');
             } else {
                 console.error('Unexpected response:', res);
             }
