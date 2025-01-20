@@ -207,7 +207,9 @@ class Connection():
       ))
     # Commit changes to the database
     self.conn.commit()
-    print('Book Insert! YAY!')
+    db_obj = Connection()
+    book_id = db_obj.get_book_id_last_book()
+    return book_id
   
   def deleteBook(self, book_id):
     self._SQL = """
@@ -215,7 +217,6 @@ class Connection():
     WHERE book_id = %s
     """
     try:
-        print('TRY!')
         self.cursor.execute(self._SQL, (book_id, ))
         self.conn.commit()
         print(f"Book with ID {book_id} Deleted successfully.")
@@ -224,3 +225,8 @@ class Connection():
         print("EXCEPT")
         print(f"Error: {err}")
         return False
+  
+  def get_book_id_last_book(self):
+    self.cursor.execute("SELECT * FROM books ORDER BY book_id DESC LIMIT 1")
+    last_book_added = self.cursor.fetchone()
+    return last_book_added

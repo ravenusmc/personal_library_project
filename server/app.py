@@ -45,8 +45,9 @@ def addBook():
     db_obj = Connection()
     post_data = request.get_json()
     book_data = post_data['book']
-    db_obj.add_book_to_database(book_data)
-  return jsonify('5')
+    last_book_added = db_obj.add_book_to_database(book_data)
+    print(last_book_added)
+  return jsonify(last_book_added)
 
 @app.route('/deleteBook', methods=['POST'])
 def delete_book():
@@ -58,7 +59,6 @@ def delete_book():
                 return jsonify({'status': 'error', 'message': 'Invalid input'}), 400
             book_id = post_data['bookID']
             delete_success = db_obj.deleteBook(book_id) 
-            print(delete_success)
             if delete_success:
                 return jsonify({'status': 'success', 'message': 'Book deleted successfully'}), 200
             else:

@@ -55,6 +55,9 @@ const actions = {
     axios.post(path, payload)
     .then((res) => {
       console.log(res.data)
+      commit('setBooks', res.data)
+      // router.push(`/book/${res.data}`);
+      router.push('/book/0');
     })
     .catch(( error ) => {
       console.log(error)
