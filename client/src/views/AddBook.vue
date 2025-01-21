@@ -80,6 +80,14 @@
     methods: {
       ...mapActions("library", ["addBook"]),
       addBookToDatabase() {
+        if (this.book['title'] === "") {
+          alert('Please Enter Book Title')
+        } else if (this.book['firstName'] === "") {
+          alert('Please enter a First Name')
+        }else if (this.book['lastName'] === "") {
+          alert('Please enter a Last Name')
+        }
+        console.log(this.book['title'])
         const payload = {
           book: this.book
         };
