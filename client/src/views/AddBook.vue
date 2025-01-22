@@ -86,12 +86,16 @@
           alert('Please enter a First Name')
         }else if (this.book['lastName'] === "") {
           alert('Please enter a Last Name')
-        }
-        console.log(this.book['title'])
-        const payload = {
+        }else if (this.book['publishDate'] === "") {
+          alert('Please enter a Date')
+        }else if (this.book['subjects'] === "") {
+          alert('Please enter a subject')
+        }else {
+          const payload = {
           book: this.book
         };
-        this.addBook({ payload });
+          this.addBook({ payload });
+        }
       }
     }
   };
