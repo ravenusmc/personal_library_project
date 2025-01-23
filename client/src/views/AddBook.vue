@@ -80,6 +80,7 @@
     methods: {
       ...mapActions("library", ["addBook"]),
       addBookToDatabase() {
+        // Ensuring only critical fields may get through
         if (this.book['title'] === "") {
           alert('Please Enter Book Title')
         } else if (this.book['firstName'] === "") {
