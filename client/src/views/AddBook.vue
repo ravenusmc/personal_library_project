@@ -2,17 +2,17 @@
     <div class="form-container">
       <form @submit.prevent="addBookToDatabase" class="form">
         <div class="form-group">
-          <label for="title">Title</label>
+          <label for="title">Title*</label>
           <input type="text" id="title" v-model="book.title" placeholder="Enter the book title" />
         </div>
         
         <div class="form-group">
-          <label for="firstName">First Name</label>
+          <label for="firstName">First Name*</label>
           <input type="text" id="firstName" v-model="book.firstName" placeholder="Enter the author's first name" />
         </div>
         
         <div class="form-group">
-          <label for="lastName">Last Name</label>
+          <label for="lastName">Last Name*</label>
           <input type="text" id="lastName" v-model="book.lastName" placeholder="Enter the author's last name" />
         </div>
         
@@ -22,7 +22,7 @@
         </div>
         
         <div class="form-group">
-          <label for="publishDate">Publish Date</label>
+          <label for="publishDate">Publish Date*</label>
           <input type="date" id="publishDate" v-model="book.publishDate" />
         </div>
         
@@ -32,7 +32,7 @@
         </div>
         
         <div class="form-group">
-          <label for="subjects">Subjects</label>
+          <label for="subjects">Subjects*</label>
           <input type="text" id="subjects" v-model="book.subjects" placeholder="Enter subjects" />
         </div>
         
