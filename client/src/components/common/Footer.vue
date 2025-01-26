@@ -1,7 +1,7 @@
 <template>
     <footer class="footer">
       <div class="container">
-        <p class="footer-text">Copyright &copy; 2024 Double Sun Productions</p>
+        <p class="footer-text">Copyright &copy; 2025 Double Sun Productions</p>
         <div class="social-icons">
           <a
             href="https://www.linkedin.com/in/mcuddy1/"

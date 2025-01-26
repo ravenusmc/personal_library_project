@@ -62,5 +62,4 @@
     align-items: center;
   }
   
-  /* Responsive aspects */
   </style>
