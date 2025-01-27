@@ -2,9 +2,9 @@
     <div>
         <div class="main-image">
         <div class="title-div">
-            <h1 class="center">Welcome to My Personal Library</h1>
+            <h1 class="center">My Library</h1>
             <hr />
-            <h3 class="center">A World of Stories at Your Fingertips</h3>
+            <h3 class="center">A Vast Collection of Stories and Knowledge</h3>
         </div>
         </div>
     </div>
