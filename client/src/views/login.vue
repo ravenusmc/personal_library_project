@@ -50,8 +50,6 @@
         }
   
         this.errorMessage = "";
-        alert("Login successful!");
-        // Here you can add authentication logic
       },
     },
   };
