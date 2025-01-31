@@ -39,6 +39,7 @@
     },
     methods: {
       handleLogin() {
+        //Error handling
         if (!this.email.includes("@")) {
           this.errorMessage = "Please enter a valid email.";
           return;
