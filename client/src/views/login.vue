@@ -1,30 +1,34 @@
 <template>
-    <div class="login-container">
-      <form @submit.prevent="handleLogin">
-        <h2>Login</h2>
-  
-        <div class="input-group">
-          <input 
-            type="email" 
-            v-model="email" 
-            placeholder="Email" 
-            required
-          />
+  <div>
+    <div class="outer-div">
+        <div class="login-container">
+          <form @submit.prevent="handleLogin">
+            <h2>Login</h2>
+      
+            <div class="input-group">
+              <input 
+                type="email" 
+                v-model="email" 
+                placeholder="Email" 
+                required
+              />
+            </div>
+      
+            <div class="input-group">
+              <input 
+                type="password" 
+                v-model="password" 
+                placeholder="Password" 
+                required
+              />
+            </div>
+      
+            <button type="submit">Login</button>
+      
+            <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+          </form>
         </div>
-  
-        <div class="input-group">
-          <input 
-            type="password" 
-            v-model="password" 
-            placeholder="Password" 
-            required
-          />
-        </div>
-  
-        <button type="submit">Login</button>
-  
-        <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-      </form>
+      </div>
     </div>
   </template>
   
@@ -67,21 +71,26 @@
     height: 100vh;
     background: url('https://source.unsplash.com/random/1600x900') no-repeat center center/cover;
   }
+
+  .outer-div {
+    display: flex;
+    justify-content: center;
+  }
   
   /* Login Container */
   .login-container {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    padding: 30px;
+    padding: 50px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
     width: 320px;
+    margin-top: 100px;
   }
   
   /* Heading */
   h2 {
-    color: #fff;
     margin-bottom: 20px;
   }
   
@@ -94,16 +103,15 @@
     width: 100%;
     padding: 12px;
     border-radius: 5px;
-    border: none;
     font-size: 16px;
     background: rgba(255, 255, 255, 0.2);
-    color: white;
     outline: none;
     transition: 0.3s;
+    border: 2px solid black;
   }
   
   input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(27, 24, 205, 0.7);
   }
   
   input:focus {
