@@ -93,8 +93,8 @@
           alert('Please enter a subject')
         }else {
           const payload = {
-          book: this.book
-        };
+            book: this.book
+          };
           this.addBook({ payload });
         }
       }

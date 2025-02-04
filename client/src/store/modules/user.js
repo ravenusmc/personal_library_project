@@ -32,6 +32,7 @@ const actions = {
 
 
 	loginUser: ({ commit }, { payload }) => {
+		console.log("action!")
 		const path = 'http://localhost:5000/login';
 		axios.post(path, payload)
 			.then((res) => {

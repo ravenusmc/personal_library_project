@@ -33,6 +33,8 @@
   </template>
   
   <script>
+  import { mapActions } from "vuex";
+  
   export default {
     data() {
       return {
@@ -42,6 +44,7 @@
       };
     },
     methods: {
+      ...mapActions("user", ["loginUser"]),
       handleLogin() {
         //Error handling
         if (!this.email.includes("@")) {
@@ -53,8 +56,14 @@
           this.errorMessage = "Password must be at least 6 characters long.";
           return;
         }
+
+        const payload = {
+          email: this.email,
+          password: this.password,
+        };
   
         this.errorMessage = "";
+        this.loginUser({ payload });
       },
     },
   };
