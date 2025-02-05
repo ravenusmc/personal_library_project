@@ -32,13 +32,10 @@ const actions = {
 
 
 	loginUser: ({ commit }, { payload }) => {
-		console.log("action!")
 		const path = 'http://localhost:5000/login';
 		axios.post(path, payload)
 			.then((res) => {
 				if (res.data.login_flag) {
-					// Not sure if I'll set up a user at all
-					// commit('session/setUserObject', res.data.user, { root: true })
 					commit('setLoginFlag', res.data.login_flag);
 					router.push({ name: 'missing' });
 				}
