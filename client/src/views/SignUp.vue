@@ -2,7 +2,7 @@
     <div>
       <div class="outer-div">
           <div class="login-container">
-            <form @submit.prevent="handleLogin">
+            <form @submit.prevent="handleSignUp">
               <h2>Sign Up</h2>
         
               <div class="input-group">
@@ -45,7 +45,7 @@
       },
       methods: {
         ...mapActions("user", ["loginUser"]),
-        handleLogin() {
+        handleSignUp() {
           //Error handling
           if (!this.email.includes("@")) {
             this.errorMessage = "Please enter a valid email.";
