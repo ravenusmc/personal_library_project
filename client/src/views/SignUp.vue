@@ -63,7 +63,7 @@
           };
     
           this.errorMessage = "";
-          this.loginUser({ payload });
+          this.SignUpUser({ payload });
         },
       },
     };
