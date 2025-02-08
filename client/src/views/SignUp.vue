@@ -22,6 +22,15 @@
                   required
                 />
               </div>
+
+              <div class="input-group">
+                <input 
+                  type="password" 
+                  v-model="password_match" 
+                  placeholder="ReType Password" 
+                  required
+                />
+              </div>
         
               <button type="submit">Login</button>
         
