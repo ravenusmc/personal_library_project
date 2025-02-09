@@ -49,6 +49,7 @@
         return {
           email: "",
           password: "",
+          password_match: "",
           errorMessage: "",
         };
       },
