@@ -66,6 +66,10 @@
             this.errorMessage = "Password must be at least 6 characters long.";
             return;
           }
+
+          if (this.password) {
+            
+          }
   
           const payload = {
             email: this.email,
