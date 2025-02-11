@@ -67,7 +67,7 @@
             return;
           }
 
-          if (this.password) {
+          if (this.password != this.password_match) {
             
           }
   
