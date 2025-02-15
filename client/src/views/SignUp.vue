@@ -60,24 +60,22 @@
           if (!this.email.includes("@")) {
             this.errorMessage = "Please enter a valid email.";
             return;
-          }
-    
-          if (this.password.length < 6) {
+          } else if (this.password.length < 6) {
             this.errorMessage = "Password must be at least 6 characters long.";
             return;
-          }
-
-          if (this.password != this.password_match) {
+          } else if (this.password != this.password_match) {
             //do something to check password matching
+          } else {
+            const payload = {
+              email: this.email,
+              password: this.password,
+            };
+    
+            this.errorMessage = "";
+            this.SignUpUser({ payload });
           }
   
-          const payload = {
-            email: this.email,
-            password: this.password,
-          };
-    
-          this.errorMessage = "";
-          this.SignUpUser({ payload });
+
         },
       },
     };
