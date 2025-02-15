@@ -68,7 +68,7 @@
           }
 
           if (this.password != this.password_match) {
-            //do something to check password
+            //do something to check password matching
           }
   
           const payload = {
