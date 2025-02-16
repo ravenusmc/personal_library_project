@@ -65,12 +65,12 @@
             return;
           } else if (this.password != this.password_match) {
             //do something to check password matching
+            this.errorMessage = "Passwords do not match"
           } else {
             const payload = {
               email: this.email,
               password: this.password,
             };
-    
             this.errorMessage = "";
             this.SignUpUser({ payload });
           }
