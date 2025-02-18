@@ -56,7 +56,7 @@
       methods: {
         ...mapActions("user", ["loginUser"]),
         handleSignUp() {
-          //Error handling
+
           if (!this.email.includes("@")) {
             this.errorMessage = "Please enter a valid email.";
             return;
@@ -73,7 +73,6 @@
             this.errorMessage = "";
             this.SignUpUser({ payload });
           }
-  
 
         },
       },
