@@ -54,7 +54,7 @@
         };
       },
       methods: {
-        ...mapActions("user", ["loginUser"]),
+        ...mapActions("user", ["signUpUser"]),
         handleSignUp() {
           // Error Handling 
           if (!this.email.includes("@")) {
@@ -71,7 +71,7 @@
               password: this.password,
             };
             this.errorMessage = "";
-            this.SignUpUser({ payload });
+            this.signUpUser({ payload });
           }
 
         },

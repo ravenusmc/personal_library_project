@@ -19,8 +19,8 @@ const getters = {
 
 const actions = {
 
-	setUpUser: ({ commit }, { payload }) => {
-		const path = 'http://localhost:5000/setUpUser';
+	signUpUser: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/signUpUser';
 		axios.post(path, payload)
 			.then((res) => {
 				router.push({ name: 'login'})
@@ -29,7 +29,6 @@ const actions = {
 				console.log(error);
 			});
 	},
-
 
 	loginUser: ({ commit }, { payload }) => {
 		const path = 'http://localhost:5000/login';
