@@ -16,6 +16,24 @@ class Connection():
                                         port=3306,
                                         database='personal_library')
     self.cursor = self.conn.cursor()
+
+  def encrypt_pass(self, post_data):
+    password = post_data['password'].encode('utf-8')
+    hashed = bcrypt.hashpw(password, bcrypt.gensalt())
+    user_created = db.insert(post_data, hashed)
+    return hashed
+  
+  # This method will insert a new user into the database.
+  def insert(self, post_data, hashed):
+      self._SQL = """insert into users
+      (firstName, lastName, username, email, password)
+      values
+      (%s, %s, %s, %s, %s)"""
+      self.cursor.execute(self._SQL, (post_data['firstName'], post_data['lastName'], 
+                          post_data['username'], post_data['email'], hashed))
+      self.conn.commit()
+      user_created = True
+      return user_created
   
     
   def find_book_by_author(self, query, description):

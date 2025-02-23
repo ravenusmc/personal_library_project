@@ -20,3 +20,12 @@ CREATE TABLE books
   location VARCHAR(10) NOT NULL,
   PRIMARY KEY(book_id)
 );
+
+CREATE TABLE users
+(
+  user_id INT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(240) NOT NULL,
+  email VARCHAR(240) NOT NULL,
+  password VARCHAR(240) NOT NUll,
+  PRIMARY KEY(user_id)
+);

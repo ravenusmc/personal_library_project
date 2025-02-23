@@ -12,15 +12,16 @@ app.config.from_object(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 #Route to sign up user
-@app.route('/signUpUser', methods=['GET', 'POST'])
+@app.route('/signUpUser', methods=['OPTIONS', 'POST'])
 def signUpUser():
+    if request.method == 'OPTIONS':  # Handle preflight request
+        return jsonify({'message': 'Preflight request successful'}), 200
     if request.method == 'POST':
         db = Connection()
-        post_data = request.get_json()
-        print(post_data)
-        # hashed = db.encrypt_pass(post_data)
-        # user_created = db.insert(post_data, hashed)
+        post_data = request.get_json()  
+        hashed = db.encrypt_pass(post_data)
         return jsonify('5')
+
 
 # Route to get books based on search query
 @app.route('/getBooks', methods=['POST'])
@@ -78,4 +79,4 @@ def delete_book():
             return jsonify({'status': 'error', 'message': str(e)}), 500
 
 if __name__ == '__main__':
-  app.run(debug=True)
+    app.run(debug=True)
