@@ -20,6 +20,7 @@ def signUpUser():
         db = Connection()
         post_data = request.get_json()  
         hashed = db.encrypt_pass(post_data)
+        db.insert(post_data, hashed)
         return jsonify('5')
 
 
