@@ -20,7 +20,6 @@ class Connection():
   def encrypt_pass(self, post_data):
     password = post_data['password'].encode('utf-8')
     hashed = bcrypt.hashpw(password, bcrypt.gensalt())
-    user_created = db.insert(post_data, hashed)
     return hashed
   
   # This method will insert a new user into the database.
@@ -28,7 +27,7 @@ class Connection():
       self._SQL = """insert into users
       (email, password)
       values
-      (%s, %)"""
+      (%s, %s)"""
       self.cursor.execute(self._SQL, (post_data['email'], hashed))
       self.conn.commit()
       user_created = True

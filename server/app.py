@@ -17,12 +17,11 @@ def signUpUser():
     if request.method == 'OPTIONS':  # Handle preflight request
         return jsonify({'message': 'Preflight request successful'}), 200
     if request.method == 'POST':
-        db = Connection()
+        db_obj = Connection()
         post_data = request.get_json()  
-        hashed = db.encrypt_pass(post_data)
-        db.insert(post_data, hashed)
+        hashed = db_obj.encrypt_pass(post_data)
+        db_obj.insert(post_data, hashed)
         return jsonify('5')
-
 
 # Route to get books based on search query
 @app.route('/getBooks', methods=['POST'])
