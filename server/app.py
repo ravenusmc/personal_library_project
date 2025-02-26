@@ -23,6 +23,17 @@ def signUpUser():
         db_obj.insert(post_data, hashed)
         return jsonify('5')
 
+#Route to login
+@app.route('/login', methods=['OPTIONS', 'POST'])
+def login():
+    if request.method == 'POST':
+        db_obj = Connection()
+        post_data = request.get_json()  
+        hashed = db_obj.encrypt_pass(post_data)
+        db_obj.insert(post_data, hashed)
+        return jsonify('5')
+    
+
 # Route to get books based on search query
 @app.route('/getBooks', methods=['POST'])
 def get_Books_Data():

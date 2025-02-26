@@ -32,8 +32,7 @@ class Connection():
       self.conn.commit()
       user_created = True
       return user_created
-  
-    
+
   def find_book_by_author(self, query, description):
     try:
         # Prepare the SQL query
