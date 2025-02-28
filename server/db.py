@@ -33,7 +33,7 @@ class Connection():
       user_created = True
       return user_created
 
-  # This method will check to ensure that the username is in the database.
+  # This method will check to ensure that the username is in the database and then log them in.
   def verify_user(self, email, password):
         # Setting up a user dictionary
         user = {}
