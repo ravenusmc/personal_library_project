@@ -36,7 +36,8 @@ def login():
         # Checking to see if the user is in the database
         login_flag, not_found, password_no_match, user = db_obj.verify_user(
             email, password)
-        return jsonify('5')
+        flags = [login_flag, not_found, password_no_match, user]
+        return jsonify(flags)
     
 # Route to get books based on search query
 @app.route('/getBooks', methods=['POST'])

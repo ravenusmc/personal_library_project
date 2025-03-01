@@ -34,9 +34,10 @@ const actions = {
 		const path = 'http://localhost:5000/login';
 		axios.post(path, payload)
 			.then((res) => {
-				if (res.data.login_flag) {
+				if (res.data) {
+					console.log(res.data)
 					commit('setLoginFlag', res.data.login_flag);
-					router.push({ name: 'missing' });
+					router.push({ name: 'library' });
 				}
 				commit('setNoPasswordMatch', res.data.Password_no_match);
 				commit('setUserNotFound', res.data.Not_found);
@@ -58,6 +59,14 @@ const mutations = {
 
 	setLoginFlag(state, value) {
 		state.loginFlag = value;
+	},
+
+	setNoPasswordMatch(state, value) {
+		state.passwordNoMatch = value 
+	}, 
+
+	setUserNotFound(state, value) {
+		state.userNotFound
 	},
 
 };
