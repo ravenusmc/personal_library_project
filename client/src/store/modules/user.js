@@ -35,8 +35,8 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				if (res.data) {
-					console.log(res.data)
-					commit('setLoginFlag', res.data.login_flag);
+					console.log(res.data[0])
+					commit('setLoginFlag', res.data[0]);
 					router.push({ name: 'library' });
 				}
 				commit('setNoPasswordMatch', res.data.Password_no_match);

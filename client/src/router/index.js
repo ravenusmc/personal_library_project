@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store/index';
 import HomeView from '../views/HomeView.vue'
 import BookDetails from "@/components/library/BookDetails.vue";
 
@@ -22,7 +23,21 @@ const routes = [
   {
     path: '/library',
     name: 'library',
-    component: () => import('../views/Library.vue')
+    component: () => import('../views/Library.vue'),
+    // beforeEnter: (to, from, next) => {
+    //   if (store.state.user.loginFlag === false) {
+    //     next('/login');
+    //   } else {
+    //     next();
+    //   }
+    // },
+    // beforeRouteLeave: (to, from, next) => {
+    //   if (store.state.user.loginFlag === false) {
+    //     next('/login');
+    //   } else {
+    //     next();
+    //   }
+    // },
   },
   {
     path: '/login',
@@ -37,12 +52,40 @@ const routes = [
   {
     path: '/addbook',
     name: 'AddBook',
-    component: () => import('../views/AddBook.vue')
+    component: () => import('../views/AddBook.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.user.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.user.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: "/book/:id",
     name: "BookDetails",
     component: BookDetails,
+    beforeEnter: (to, from, next) => {
+      if (store.state.user.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.user.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
   },
 ]
 

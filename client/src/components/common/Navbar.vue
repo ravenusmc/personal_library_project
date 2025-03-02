@@ -22,12 +22,12 @@
   export default {
     name: "navbar",
     computed: {
-      ...mapGetters("common", ["loginFlag"]),
+      ...mapGetters("user", ["loginFlag"]),
     },
     methods: {
-      ...mapActions(["common/logout"]),
+      ...mapActions(["user/logout"]),
       logout: function () {
-        this.$store.dispatch("common/logout");
+        this.$store.dispatch("user/logout");
       },
     },
   };
