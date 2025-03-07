@@ -50,6 +50,7 @@ const routes = [
     path: '/addbook',
     name: 'AddBook',
     component: () => import('../views/AddBook.vue'),
+    // Ensuring that a user must be logged in to go down this route. 
     beforeEnter: (to, from, next) => {
       if (store.state.user.loginFlag === false) {
         next('/login');
@@ -69,6 +70,7 @@ const routes = [
     path: "/book/:id",
     name: "BookDetails",
     component: BookDetails,
+    // Ensuring that a user must be logged in to go down this route. 
     beforeEnter: (to, from, next) => {
       if (store.state.user.loginFlag === false) {
         next('/login');
