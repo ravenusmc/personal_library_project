@@ -72,6 +72,7 @@ const routes = [
     name: "BookDetails",
     component: BookDetails,
     // Ensuring that a user must be logged in to go down this route. 
+    // I have them commented out since still working on the project.
     // beforeEnter: (to, from, next) => {
     //   if (store.state.user.loginFlag === false) {
     //     next('/login');
