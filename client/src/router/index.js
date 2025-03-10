@@ -52,20 +52,20 @@ const routes = [
     component: () => import('../views/AddBook.vue'),
     // Ensuring that a user must be logged in to go down this route. 
     // I have them commented out since still working on the project.
-    // beforeEnter: (to, from, next) => {
-    //   if (store.state.user.loginFlag === false) {
-    //     next('/login');
-    //   } else {
-    //     next();
-    //   }
-    // },
-    // beforeRouteLeave: (to, from, next) => {
-    //   if (store.state.user.loginFlag === false) {
-    //     next('/login');
-    //   } else {
-    //     next();
-    //   }
-    // },
+    beforeEnter: (to, from, next) => {
+      if (store.state.user.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.user.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: "/book/:id",
@@ -73,20 +73,20 @@ const routes = [
     component: BookDetails,
     // Ensuring that a user must be logged in to go down this route. 
     // I have them commented out since still working on the project.
-    // beforeEnter: (to, from, next) => {
-    //   if (store.state.user.loginFlag === false) {
-    //     next('/login');
-    //   } else {
-    //     next();
-    //   }
-    // },
-    // beforeRouteLeave: (to, from, next) => {
-    //   if (store.state.user.loginFlag === false) {
-    //     next('/login');
-    //   } else {
-    //     next();
-    //   }
-    // },
+    beforeEnter: (to, from, next) => {
+      if (store.state.user.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.user.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
   },
 ]
 
