@@ -24,8 +24,9 @@
             </div>
       
             <button type="submit">Login</button>
-      
+            <!-- error handling -->
             <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+
           </form>
         </div>
       </div>
@@ -42,6 +43,9 @@
         password: "",
         errorMessage: "",
       };
+    },
+    computed: {
+      ...mapGetters("user", ["loginFlag"]),
     },
     methods: {
       ...mapActions("user", ["loginUser"]),
