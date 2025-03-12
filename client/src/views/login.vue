@@ -26,7 +26,7 @@
             <button type="submit">Login</button>
             <!-- error handling -->
             <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-
+            <p v-if="!loginFlag">Hello</p>
           </form>
         </div>
       </div>
@@ -34,7 +34,7 @@
   </template>
   
   <script>
-  import { mapActions } from "vuex";
+  import { mapGetters, mapActions } from "vuex";
   
   export default {
     data() {

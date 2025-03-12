@@ -37,7 +37,9 @@ const actions = {
 				if (res.data) {
 					console.log(res.data[0])
 					commit('setLoginFlag', res.data[0]);
-					router.push({ name: 'library' });
+					if (res.data[0] === true) {
+						router.push({ name: 'library' });
+					}
 				}
 				commit('setNoPasswordMatch', res.data.Password_no_match);
 				commit('setUserNotFound', res.data.Not_found);

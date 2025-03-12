@@ -22,7 +22,7 @@
   export default {
     name: "navbar",
     computed: {
-      ...mapGetters("user", ["passwordNoMatch"]),
+      ...mapGetters("user", ["passwordNoMatch", "loginFlag"]),
     },
     methods: {
       ...mapActions(["user/logout"]),
