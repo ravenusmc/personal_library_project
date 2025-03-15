@@ -25,8 +25,9 @@
       
             <button type="submit">Login</button>
             <!-- error handling -->
+            {{ passwordNoMatch }}
             <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-            <p v-if="!loginFlag">Password is Wrong</p>
+            <p v-if="passwordNoMatch">Password is Wrong</p>
           </form>
         </div>
       </div>
@@ -45,7 +46,7 @@
       };
     },
     computed: {
-      ...mapGetters("user", ["loginFlag"]),
+      ...mapGetters("user", ["loginFlag", "passwordNoMatch"]),
     },
     methods: {
       ...mapActions("user", ["loginUser"]),
