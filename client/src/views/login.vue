@@ -27,7 +27,7 @@
             <!-- error handling -->
             {{ passwordNoMatch }}
             <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-            <p v-if="passwordNoMatch">Password is Wrong</p>
+            <p v-if="passwordNoMatch">Password is Incorrect</p>
           </form>
         </div>
       </div>
