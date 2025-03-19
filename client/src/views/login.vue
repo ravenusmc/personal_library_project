@@ -24,7 +24,7 @@
             </div>
       
             <button type="submit">Login</button>
-            <!-- error handling -->
+            <!-- error messages -->
             <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
             <p v-if="passwordNoMatch">Password is Incorrect</p>
           </form>
